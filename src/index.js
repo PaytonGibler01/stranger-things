@@ -10,6 +10,7 @@ import {
 
 import {
   Header,
+  Posts,
 } from './components';
 
 
@@ -20,9 +21,10 @@ const App = () => {
     <Router>
       <div id="App">
         <Header/>
+        <Posts/>
       </div>
     </Router>
   );
 }
 
-ReactDOM.render(<App />,document.getElementById('root'));
+ReactDOM.render(<App />,document.getElementById('app'));
