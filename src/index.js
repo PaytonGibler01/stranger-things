@@ -7,7 +7,7 @@ import {
   Switch,
   Redirect
 } from 'react-router-dom';
-
+import { FetchAllPosts } from './api';
 import {
   Header,
   Posts,
@@ -16,15 +16,22 @@ import {
 
 
 const App = () => {
+const [allPosts, setAllPosts] = useState([])
+
+useEffect(async()=>{setAllPosts(await FetchAllPosts())}, [])
+
 
   return (
     <Router>
       <div id="App">
         <Header/>
-        <Posts/>
+        {/* <Route path="/posts"> */}
+        <Posts allPosts={allPosts}/>
+        {/* </Route> */}
+
       </div>
     </Router>
   );
 }
 
-ReactDOM.render(<App />,document.getElementById('app'));
+ReactDOM.render(<App />,document.getElementById('root'));
