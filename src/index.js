@@ -11,6 +11,7 @@ import { FetchAllPosts } from './api';
 import {
   Header,
   Posts,
+  Register,
 } from './components';
 
 
@@ -24,7 +25,7 @@ useEffect(async()=>{setAllPosts(await FetchAllPosts())}, [])
   return (
     <Router>
       <div id="App">
-        <Header/>
+        <Register />
         {/* <Route path="/posts"> */}
         <Posts allPosts={allPosts}/>
         {/* </Route> */}

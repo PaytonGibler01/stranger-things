@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
-//import { FetchAllPosts } from "../api";
+
 
  const Posts = ({allPosts}) => {
-  // const { allPosts } = props
+
   console.log(allPosts)
   return (
     <div className="posts-main-container">
@@ -18,8 +18,6 @@ import React, {useState, useEffect} from "react";
                 <p>Posted By : {post.author.username}</p>
                 <p>Price : {post.price}</p>
                 <p>Posted at {post.createdAt}</p>
-                <p>{post.description}</p>
-                <p>{post.description}</p>
               </div>
             )
           })
