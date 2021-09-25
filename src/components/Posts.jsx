@@ -25,5 +25,21 @@ import React, {useState, useEffect} from "react";
     </div>
   );
 };
-export default Posts;
+export const PostsLink = (()=>{
+  return(
+    <div className="posts-Button-Link">
+        <form
+            id="postsButton"
+            onSubmit={async (event)=> {
+                event.preventDefault();
+                try {
+                  Posts()
+                } catch (error) {
+                  
+                }
+              } 
+            }
+        /></div>)} )
 
+        export default Posts
+        

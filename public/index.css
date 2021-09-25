@@ -1,0 +1,24 @@
+
+
+   #RegisterButton, #loginButton, #logoutButton, #postsButton {
+    justify-content: center;
+    float: inherit;
+    margin: 1em auto;
+    width: 200px;
+  
+    font-family: 'Balsamic Sans', sans-serif;
+    font-size: 16px;
+  
+    background: lightseagreen;
+    padding: 1em;
+
+}
+
+header{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    background-color: cadetblue;
+}
+
+

@@ -16,9 +16,8 @@ const Register = (props) => {
                         const {data:{token}} = await registerUser(userName, password);
                         storeToken(token)
 
-                        setUserName('')
-                        setPassword('')
-                        console.log(userName, "!!!!!!!!")
+                         setUserName("")    //maybe dont need !//
+                         setPassword("")
                     } catch (error) {
                         console.error(error)
                     }
@@ -50,7 +49,8 @@ const Register = (props) => {
                 }}
                 ></input>
             </fieldset>
-            <button type="submit" id="register">Register</button>
+
+           
             </form>
         </div>
     )
