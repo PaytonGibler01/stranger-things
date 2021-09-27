@@ -12,6 +12,9 @@ import {
   Header,
   Posts,
   Register,
+  // NavBar,
+  loginUser
+
 } from './components';
 
 
@@ -25,13 +28,24 @@ useEffect(async()=>{setAllPosts(await FetchAllPosts())}, [])
   return (
     <Router>
       <div id="App">
-        <Register />
-        {/* <Route path="/posts"> */}
-        <Posts allPosts={allPosts}/>
-        {/* </Route> */}
+        {/* <NavBar/> */}
+        <Switch>
+          <Route path="register">
+            <Register />
+          </Route>
+          <Route path="login">
+            <loginUser />
+          </Route>
+          
 
+
+         <Route path="/posts">
+            <Posts allPosts={allPosts}/>
+         </Route> 
+        </Switch>
       </div>
-    </Router>
+      </Router>
+   
   );
 }
 
