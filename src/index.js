@@ -36,7 +36,8 @@ const App = () => {
           </Route>
         </Switch>
       </div>
-    </Router>
+      </Router>
+   
   );
 };
 
