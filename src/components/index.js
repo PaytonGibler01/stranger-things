@@ -1,3 +1,6 @@
 export { default as Header } from './Header'
 export { default as Posts} from './Posts'
 export {default as Register} from './Register'
+export {default as RLogin} from './Login'
+export {default as NavBar} from './NavBar'
+export {default as NewPostForm} from './NewPostForm'

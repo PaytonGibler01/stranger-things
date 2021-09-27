@@ -1,52 +1,43 @@
-import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
+import React, { useState, useEffect } from "react";
+import ReactDOM from "react-dom";
 
 import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect
-} from 'react-router-dom';
-import { FetchAllPosts } from './api';
-import {
-  Header,
-  Posts,
-  Register,
-  // NavBar,
-  loginUser
-
-} from './components';
-
-
+  Redirect,
+} from "react-router-dom";
+import { FetchAllPosts } from "./api";
+import { Header, Posts, Register, NavBar, NewPostForm, 
+  // Login
+ } from "./components";
 
 const App = () => {
-const [allPosts, setAllPosts] = useState([])
+  const [allPosts, setAllPosts] = useState([]);
 
-useEffect(async()=>{setAllPosts(await FetchAllPosts())}, [])
-
+  useEffect(async () => {
+    setAllPosts(await FetchAllPosts());
+  }, []);
 
   return (
     <Router>
       <div id="App">
-        {/* <NavBar/> */}
+        <NavBar />
         <Switch>
-          <Route path="register">
+          <Route path="/register">
             <Register />
           </Route>
-          <Route path="login">
-            <loginUser />
+          {/* <Route path="/login">
+            <Login />
+          </Route> */}
+          <Route path="/posts">
+            <Posts allPosts={allPosts} />
+              <NewPostForm setAllPosts={setAllPosts}/>
           </Route>
-          
-
-
-         <Route path="/posts">
-            <Posts allPosts={allPosts}/>
-         </Route> 
         </Switch>
       </div>
-      </Router>
-   
+    </Router>
   );
-}
+};
 
-ReactDOM.render(<App />,document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById("root"));

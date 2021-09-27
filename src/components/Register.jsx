@@ -25,7 +25,7 @@ const Register = (props) => {
             >
 
             <fieldset className="auth-component_input">
-                <label htmlFor="userName">User Name</label>
+                <label htmlFor="userName">Username: </label>
                 <input
                 id="userName"
                 type="text"
@@ -38,7 +38,7 @@ const Register = (props) => {
             </fieldset>
             
             <fieldset className="auth-component_input">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">Password: </label>
                 <input
                 id="password"
                 type="password"
@@ -49,9 +49,10 @@ const Register = (props) => {
                 }}
                 ></input>
             </fieldset>
-
+            <button>Register</button>
            
             </form>
+            <h1>hello register</h1>
         </div>
     )
 }

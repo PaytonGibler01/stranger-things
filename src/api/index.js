@@ -51,3 +51,38 @@ export async function registerUser(userName, password) {
     throw error;
   }
 }
+
+export async function loginUser(userName, password) {
+  try {
+    const {data} = await axios.post(`${BASE}/users/login`, {
+        user:  { 
+          username: userName,
+          password: password
+        }
+        })
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function createPost(title, description, user, token) {
+  try {
+    const {data} = await axios.post(`${BASE}/posts`, {
+        newPost:  { 
+          title: title,
+          description: description,
+          author: user,
+        }
+        }, {
+          headers: {
+            "auth-token" : token,
+
+          }
+        })
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
