@@ -5,6 +5,7 @@ import {storeToken} from "../auth";
 const Register = (props) => {
     const [userName, setUserName] =  useState('');
     const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('')
 
     return(
         <div className="auth-component-main-container">
@@ -49,10 +50,21 @@ const Register = (props) => {
                 }}
                 ></input>
             </fieldset>
+            <fieldset className="auth-component_input">
+                <label htmlFor="Email">Email </label>
+                <input
+                id="Email"
+                type="text"
+                placeholder="enter email"
+                value={email}
+                onChange={(event)=> {
+                    setEmail(event.target.value);
+                }}
+                ></input>
+            </fieldset>
             <button>Register</button>
            
             </form>
-            <h1>hello register</h1>
         </div>
     )
 }

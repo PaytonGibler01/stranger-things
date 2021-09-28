@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {createPost} from "../api";
 import {getToken, getUser} from "../auth";
+import './NewPosts.css'
 
 const NewPostForm = ({setAllPosts, allPosts}) => {
 const [title, setTitle] = useState('')
@@ -8,7 +9,6 @@ const [description, setDescription] = useState('')
 
     return (
         <div className="new-post-component-main-container">
-            <h1>new post form</h1>
             <form
                 id="newPostSubmit"
                 onSubmit={async (event)=>{
@@ -51,7 +51,7 @@ const [description, setDescription] = useState('')
                 }}
                 ></input>
             </fieldset>
-            <button type="submit">Submit Post</button>
+            <button type="submit" id="submitPost">Submit Post</button>
             </form>
 
         </div>

@@ -1,12 +1,10 @@
-import React, {useState, useEffect} from "react";
-
-
- const Posts = ({allPosts}) => {
-
-  console.log(allPosts)
+import React, { useState, useEffect } from "react";
+import './Posts.css'
+const Posts = ({ allPosts }) => {
+  console.log(allPosts);
   return (
     <div className="posts-main-container">
-       {  allPosts.length
+      {allPosts.length
         ? allPosts.map((post) => {
             console.log(post);
             return (
@@ -14,32 +12,36 @@ import React, {useState, useEffect} from "react";
                 <h3>{post.title}</h3>
                 <p>{post.description}</p>
                 <p>Location : {post.location}</p>
-                <p>Delivery : {post.willDeliver}</p>
+                {post.willDeliver ? (
+                  <p>Delivery : yes</p>
+                ) : (
+                  <p>Delivery : no</p>
+                )}
                 <p>Posted By : {post.author.username}</p>
                 <p>Price : {post.price}</p>
                 <p>Posted at {post.createdAt}</p>
               </div>
-            )
+            );
           })
-        : null }
+        : null}
     </div>
   );
 };
-export const PostsLink = (()=>{
-  return(
+export const PostsLink = () => {
+  return (
+    
     <div className="posts-Button-Link">
-        <form
-            id="postsButton"
-            onSubmit={async (event)=> {
-                event.preventDefault();
-                try {
-                  Posts()
-                } catch (error) {
-                  
-                }
-              } 
-            }
-        /></div>)} )
+      <form
+        id="postsButton"
+        onSubmit={async (event) => {
+          event.preventDefault();
+          try {
+            Posts();
+          } catch (error) {}
+        }}
+      />
+    </div>
+  );
+};
 
-        export default Posts
-        
+export default Posts;

@@ -1,0 +1,16 @@
+h2 {
+    text-align: center;
+}
+.auth-component_input {
+    text-align: center;
+    box-sizing: content-box;
+    
+    
+}
+#submitPost {
+float: center;
+   justify-content: center;
+   box-sizing: border-box;
+   padding: 5px;
+   
+}

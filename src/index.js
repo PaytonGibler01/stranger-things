@@ -8,9 +8,14 @@ import {
   Redirect,
 } from "react-router-dom";
 import { FetchAllPosts } from "./api";
-import { Header, Posts, Register, NavBar, NewPostForm, 
-  // Login
- } from "./components";
+import {
+  Header,
+  Posts,
+  Register,
+  NavBar,
+  NewPostForm,
+  Login,
+} from "./components";
 
 const App = () => {
   const [allPosts, setAllPosts] = useState([]);
@@ -22,22 +27,21 @@ const App = () => {
   return (
     <Router>
       <div id="App">
-        <NavBar />
+         <NavBar /> 
         <Switch>
           <Route path="/register">
             <Register />
           </Route>
-          {/* <Route path="/login">
+          <Route path="/login">
             <Login />
-          </Route> */}
+          </Route>
           <Route path="/posts">
+            <NewPostForm setAllPosts={setAllPosts} />
             <Posts allPosts={allPosts} />
-              <NewPostForm setAllPosts={setAllPosts}/>
           </Route>
         </Switch>
       </div>
-      </Router>
-   
+    </Router>
   );
 };
 
