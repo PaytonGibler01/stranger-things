@@ -19,6 +19,7 @@ import {
 
 const App = () => {
   const [allPosts, setAllPosts] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(async () => {
     setAllPosts(await FetchAllPosts());
@@ -27,7 +28,8 @@ const App = () => {
   return (
     <Router>
       <div id="App">
-         <NavBar /> 
+         <NavBar setIsLoggedIn={setIsLoggedIn}
+                  isLoggedIn={isLoggedIn}/> 
         <Switch>
           <Route path="/register">
             <Register />
