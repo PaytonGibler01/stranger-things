@@ -21,7 +21,7 @@ import React, { useState } from "react";
 import { loginUser } from "../api";
 import { storeToken, storeUser } from "../auth";
 
-const Login = (props) => {
+const Login = ({setIsLoggedIn}) => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
@@ -37,6 +37,7 @@ const Login = (props) => {
             } = await loginUser(userName, password);
             storeToken(token);
             storeUser(userName);
+            setIsLoggedIn(true);
 
             setUserName(""); //maybe dont need !//
             setPassword("");

@@ -1,4 +1,6 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { TabContainer } from "react-bootstrap";
 import ReactDOM from "react-dom";
 
 import {
@@ -19,21 +21,48 @@ import {
 
 const App = () => {
   const [allPosts, setAllPosts] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+const FetchAllPosts = async ()=>{
+  try{
+    const myToken = getToken();
+
+    if(myToken){
+      setIsLoggedIn(true);
+
+    }
+
+    const {data} = await axios.get(
+      "http://clever-neumann-583.herokuapp.com/posts",
+      {
+        headers: {
+          "auth-token": myToken,
+        },
+      }
+    );
+
+    setAllPosts(data);
+  } catch (error) {
+    console.error(error);
+  }
+
+};
 
   useEffect(async () => {
     setAllPosts(await FetchAllPosts());
   }, []);
 
+
   return (
     <Router>
       <div id="App">
-         <NavBar /> 
+         <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/> 
         <Switch>
           <Route path="/register">
-            <Register />
+            <Register setIsLoggedIn={setIsLoggedIn}/>
           </Route>
           <Route path="/login">
-            <Login />
+            <Login setIsLoggedIn={setIsLoggedIn}/>
           </Route>
           <Route path="/posts">
             <NewPostForm setAllPosts={setAllPosts} />
