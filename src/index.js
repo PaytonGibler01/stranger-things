@@ -20,6 +20,8 @@ import {
 
 import {getToken} from "./auth";
 
+// COMMIT CORRECTLY PLEASE
+
 const App = () => {
   const [allPosts, setAllPosts] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
