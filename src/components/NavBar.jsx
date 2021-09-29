@@ -17,7 +17,7 @@ const NavBar = ({isLoggedIn, setIsLoggedIn}) => {
             <div className='auth-links'>
                 <button className='nav-bar-link' to="/login" onClick={()=>{
                     localStorage.clear()
-                    setIsLoggedIn();
+                    setIsLoggedIn(false);
                 }}>Logout</button>
             </div>
         ): (<div className='auth-links'>
