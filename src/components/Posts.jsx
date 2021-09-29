@@ -4,7 +4,7 @@ const Posts = ({ allPosts }) => {
   console.log(allPosts);
   return (
     <div className="posts-main-container">
-      {allPosts.length
+      {allPosts && allPosts.length
         ? allPosts.map((post) => {
             console.log(post);
             return (

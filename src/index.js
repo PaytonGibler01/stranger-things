@@ -18,11 +18,41 @@ import {
   Login,
 } from "./components";
 
+import {getToken} from "./auth";
+
 const App = () => {
   const [allPosts, setAllPosts] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+<<<<<<< HEAD
 
+=======
+const FetchAllPosts = async ()=>{
+  try{
+    const myToken = getToken();
+
+    if(myToken){
+      setIsLoggedIn(true);
+
+    }
+
+    const response = await axios.get(
+      "https://strangers-things.herokuapp.com/api/2021-UNF-HY-WEB-PT/posts",
+      {
+        headers: {
+          "auth-token": myToken,
+        },
+      }
+    );
+
+    setAllPosts(response);
+    return response.data.data.posts;
+  } catch (error) {
+    console.error(error);
+  }
+
+};
+>>>>>>> 8e0a4046c2b187e6b64467cf611b1c88283ba19c
 
   useEffect(async () => {
     setAllPosts(await FetchAllPosts());

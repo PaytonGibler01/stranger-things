@@ -4,6 +4,7 @@ const BASE = 'https://strangers-things.herokuapp.com/api/2021-UNF-HY-WEB-PT'
 
 import {storeToken, getToken} from "../auth";
 
+<<<<<<< HEAD
 const [allPosts, setAllPosts] = useState([])
 export const FetchAllPosts = async ()=>{
   try{
@@ -30,6 +31,26 @@ export const FetchAllPosts = async ()=>{
   }
 
 };
+=======
+// export const FetchAllPosts = async () => {
+//   try {
+//     const myToken = getToken();
+//     const response = await axios.get(
+//       "https://strangers-things.herokuapp.com/api/2021-UNF-HY-WEB-PT/posts",
+//       {
+//         headers: {
+//           "auth-token": myToken,
+//         },
+//       }
+//     );
+
+//     // setAllPosts(response);
+//     return response.data.data.posts
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+>>>>>>> 8e0a4046c2b187e6b64467cf611b1c88283ba19c
 
 export async function registerUser(userName, password) {
   try {
