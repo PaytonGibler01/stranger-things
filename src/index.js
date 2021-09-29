@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { TabContainer } from "react-bootstrap";
 import ReactDOM from "react-dom";
 
 import {
@@ -19,6 +18,8 @@ import {
   Login,
 } from "./components";
 
+import {getToken} from "./auth";
+
 const App = () => {
   const [allPosts, setAllPosts] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -32,8 +33,8 @@ const FetchAllPosts = async ()=>{
 
     }
 
-    const {data} = await axios.get(
-      "http://clever-neumann-583.herokuapp.com/posts",
+    const response = await axios.get(
+      "https://strangers-things.herokuapp.com/api/2021-UNF-HY-WEB-PT/posts",
       {
         headers: {
           "auth-token": myToken,
@@ -41,7 +42,8 @@ const FetchAllPosts = async ()=>{
       }
     );
 
-    setAllPosts(data);
+    setAllPosts(response);
+    return response.data.data.posts;
   } catch (error) {
     console.error(error);
   }

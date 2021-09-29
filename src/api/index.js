@@ -16,24 +16,24 @@ import {storeToken, getToken} from "../auth";
 //   }
 // };
 
-export const FetchAllPosts = async () => {
-  try {
-    const myToken = getToken();
-    const response = await axios.get(
-      "https://strangers-things.herokuapp.com/api/2021-UNF-HY-WEB-PT/posts",
-      {
-        headers: {
-          "auth-token": myToken,
-        },
-      }
-    );
+// export const FetchAllPosts = async () => {
+//   try {
+//     const myToken = getToken();
+//     const response = await axios.get(
+//       "https://strangers-things.herokuapp.com/api/2021-UNF-HY-WEB-PT/posts",
+//       {
+//         headers: {
+//           "auth-token": myToken,
+//         },
+//       }
+//     );
 
-    // setAllPosts(response);
-    return response.data.data.posts
-  } catch (error) {
-    console.log(error);
-  }
-};
+//     // setAllPosts(response);
+//     return response.data.data.posts
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 export async function registerUser(userName, password) {
   try {
