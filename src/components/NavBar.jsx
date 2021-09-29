@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { PostsLink } from "./Posts";
 import "./navBar.css";
 
-const NavBar = (props) => {
+const NavBar = () => {
   return (
     <div className="nav-bar">
       <header>
