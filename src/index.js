@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 
@@ -54,17 +53,16 @@ const FetchAllPosts = async ()=>{
     setAllPosts(await FetchAllPosts());
   }, []);
 
-
   return (
     <Router>
       <div id="App">
-         <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/> 
+         <NavBar /> 
         <Switch>
           <Route path="/register">
-            <Register setIsLoggedIn={setIsLoggedIn}/>
+            <Register />
           </Route>
           <Route path="/login">
-            <Login setIsLoggedIn={setIsLoggedIn}/>
+            <Login />
           </Route>
           <Route path="/posts">
             <NewPostForm setAllPosts={setAllPosts} />
