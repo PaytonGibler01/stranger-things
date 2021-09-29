@@ -5,11 +5,7 @@ import { PostsLink } from "./Posts";
 import "./navBar.css";
 import {logoutUser} from "./Logout";
 
-<<<<<<< HEAD
-const NavBar = () => {
-=======
 const NavBar = ({isLoggedIn, setIsLoggedIn}) => {
->>>>>>> df982811053e3f413ee2eb9956b68e08d89cb9b5
   return (
     <div className="nav-bar">
       <header>

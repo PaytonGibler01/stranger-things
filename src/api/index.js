@@ -1,24 +1,19 @@
 import axios from 'axios';
-
+import React, { useState, useEffect } from "react";
 const BASE = 'https://strangers-things.herokuapp.com/api/2021-UNF-HY-WEB-PT'
 
 import {storeToken, getToken} from "../auth";
-//this is an example of an api call with axios
 
-// export const FetchAllPosts = async () => {
-//   try {
-//     const response = await axios.get(
-//       "https://strangers-things.herokuapp.com/api/2021-UNF-HY-WEB-PT/posts"
-//     );
-//     return response.data.data.posts
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
-export const FetchAllPosts = async () => {
-  try {
+const [allPosts, setAllPosts] = useState([])
+export const FetchAllPosts = async ()=>{
+  try{
     const myToken = getToken();
+
+    if(myToken){
+      setIsLoggedIn(true);
+
+    }
+
     const response = await axios.get(
       "https://strangers-things.herokuapp.com/api/2021-UNF-HY-WEB-PT/posts",
       {
@@ -28,11 +23,12 @@ export const FetchAllPosts = async () => {
       }
     );
 
-    // setAllPosts(response);
+    setAllPosts(response);
     return response.data.data.posts
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
+
 };
 
 export async function registerUser(userName, password) {

@@ -9,7 +9,6 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
-import { FetchAllPosts } from "./api";
 import {
   Header,
   Posts,
@@ -23,30 +22,7 @@ const App = () => {
   const [allPosts, setAllPosts] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-const FetchAllPosts = async ()=>{
-  try{
-    const myToken = getToken();
 
-    if(myToken){
-      setIsLoggedIn(true);
-
-    }
-
-    const {data} = await axios.get(
-      "http://clever-neumann-583.herokuapp.com/posts",
-      {
-        headers: {
-          "auth-token": myToken,
-        },
-      }
-    );
-
-    setAllPosts(data);
-  } catch (error) {
-    console.error(error);
-  }
-
-};
 
   useEffect(async () => {
     setAllPosts(await FetchAllPosts());
