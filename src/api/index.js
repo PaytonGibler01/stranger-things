@@ -4,32 +4,7 @@ const BASE = 'https://strangers-things.herokuapp.com/api/2021-UNF-HY-WEB-PT'
 
 import {storeToken, getToken} from "../auth";
 
-const [allPosts, setAllPosts] = useState([])
-export const FetchAllPosts = async ()=>{
-  try{
-    const myToken = getToken();
 
-    if(myToken){
-      setIsLoggedIn(true);
-
-    }
-
-    const response = await axios.get(
-      "https://strangers-things.herokuapp.com/api/2021-UNF-HY-WEB-PT/posts",
-      {
-        headers: {
-          "auth-token": myToken,
-        },
-      }
-    );
-
-    setAllPosts(response);
-    return response.data.data.posts
-  } catch (error) {
-    console.error(error);
-  }
-
-};
 
 export async function registerUser(userName, password) {
   try {

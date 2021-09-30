@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { TabContainer } from "react-bootstrap";
 import ReactDOM from "react-dom";
 
 import {
@@ -20,11 +19,36 @@ import {
 
 import {getToken} from "./auth";
 
-// COMMIT CORRECTLY PLEASE
-
 const App = () => {
   const [allPosts, setAllPosts] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+const FetchAllPosts = async ()=>{
+    try{
+      const myToken = getToken();
+  
+      if(myToken){
+        setIsLoggedIn(true);
+  
+      }
+  
+      const response = await axios.get(
+        "https://strangers-things.herokuapp.com/api/2021-UNF-HY-WEB-PT/posts",
+        {
+          headers: {
+            "auth-token": myToken,
+          },
+        }
+      );
+  
+      setAllPosts(response);
+      return response.data.data.posts
+    } catch (error) {
+      console.error(error);
+    }
+  
+  };
+  
 
 
   useEffect(async () => {
