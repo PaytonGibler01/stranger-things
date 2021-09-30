@@ -16,7 +16,7 @@ const [description, setDescription] = useState('')
                     try {
                         const token = getToken();
                         const user = getUser();
-
+                        console.log(token,user,"!!!!!!!!")
                         const createPost = await createPost(title, description, user, token);
                         setAllPosts([createPost, ...allPosts]);
 
@@ -51,7 +51,7 @@ const [description, setDescription] = useState('')
                 }}
                 ></input>
             </fieldset>
-            <button type="submit" id="submitPost">Submit Post</button>
+            <button type="submit" id="newPostSubmit">Submit Post</button>
             </form>
 
         </div>

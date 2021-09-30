@@ -15,6 +15,7 @@ import {
   NavBar,
   NewPostForm,
   Login,
+  SearchBar
 } from "./components";
 
 import {getToken} from "./auth";
@@ -22,7 +23,9 @@ import {getToken} from "./auth";
 const App = () => {
   const [allPosts, setAllPosts] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const [searchTerm, setSearchTerm] = useState('')
+  const [filteredPosts, setFilteredPosts] = useState('')
+  
 const FetchAllPosts = async ()=>{
     try{
       const myToken = getToken();
@@ -54,6 +57,17 @@ const FetchAllPosts = async ()=>{
   useEffect(async () => {
     setAllPosts(await FetchAllPosts());
   }, []);
+  
+  useEffect(()=>{
+const myFilteredPosts = allPosts.filter((ele)=>{
+if (ele.title.includes(searchTerm)){
+  return true
+}
+if (ele.description.includes(searchTerm)){
+  return true
+}
+  return false
+})},[searchTerm])
 
 
   return (
@@ -68,8 +82,11 @@ const FetchAllPosts = async ()=>{
             <Login setIsLoggedIn={setIsLoggedIn}/>
           </Route>
           <Route path="/posts">
-            <NewPostForm setAllPosts={setAllPosts} />
+            <SearchBar searchTerm={searchTerm} setSearchTerm="setSearchTerm"/>
+            <div className="post-new-container">
+            <NewPostForm setAllPosts={setAllPosts} allPosts={allPosts} />
             <Posts allPosts={allPosts} />
+            </div>
           </Route>
         </Switch>
       </div>

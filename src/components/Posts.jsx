@@ -1,26 +1,55 @@
 import React, { useState, useEffect } from "react";
-import './Posts.css'
-const Posts = ({ allPosts }) => {
-  console.log(allPosts);
+import "./Posts.css";
+import { SinglePost } from "./SinglePost";
+const Posts = ({ allPosts, filteredPosts }) => {
   return (
     <div className="posts-main-container">
-      {allPosts && allPosts.length
-        ? allPosts.map((post) => {
-            console.log(post);
+      {/* {filteredPosts.length
+        ? filteredPosts.map((post) => {
             return (
-              <div key={post._id} className="post-card">
-                <h3>{post.title}</h3>
-                <p>{post.description}</p>
-                <p>Location : {post.location}</p>
-                {post.willDeliver ? (
-                  <p>Delivery : yes</p>
-                ) : (
-                  <p>Delivery : no</p>
-                )}
-                <p>Posted By : {post.author.username}</p>
-                <p>Price : {post.price}</p>
-                <p>Posted at {post.createdAt}</p>
-              </div>
+              // <link
+              //   to={`/posts/${post._id}`}
+              //   key={post._id}
+              //   className="link-tag"
+              // >
+                <div key={post._id} className="post-card">
+                  <h3>{post.title}</h3>
+                  <p>{post.description}</p>
+                  <p>Location : {post.location}</p>
+                  {post.willDeliver ? (
+                    <p>Delivery : yes</p>
+                  ) : (
+                    <p>Delivery : no</p>
+                  )}
+                  <p>Posted By : {post.author.username}</p>
+                  <p>Price : {post.price}</p>
+                  <p>Posted at {post.createdAt}</p>
+                </div>
+              // </link>
+            );
+          }) */}
+      {allPosts.length
+        ? allPosts.map((post) => {
+            return (
+              // <link
+              //   to={`/posts/${post._id}`}
+              //   key={post._id}
+              //   className="link-tag"
+              // >
+                <div key={post._id} className="post-card">
+                  <h3>{post.title}</h3>
+                  <p>{post.description}</p>
+                  <p>Location : {post.location}</p>
+                  {post.willDeliver ? (
+                    <p>Delivery : yes</p>
+                  ) : (
+                    <p>Delivery : no</p>
+                  )}
+                  {/* <p>Posted By : {post.author.username}</p> */}
+                  <p>Price : {post.price}</p>
+                  <p>Posted at {post.createdAt}</p>
+                </div>
+              // </link>
             );
           })
         : null}
@@ -29,7 +58,6 @@ const Posts = ({ allPosts }) => {
 };
 export const PostsLink = () => {
   return (
-    
     <div className="posts-Button-Link">
       <form
         id="postsButton"
