@@ -18,7 +18,7 @@ const SearchBar = ({ searchTerm, setSearchTerm }) => {
             }}
           />
         </fieldset>
-        <button id="filter">Submit</button>
+        {/* <button id="filter">Submit</button> */}
       </form>
     </div>
   );

@@ -1,21 +1,3 @@
-// async function loginUser(userName, password) {
-//     try {
-//       const {data} = await axios.post(`${BASE}/login`, {
-//           user:  {
-//             username: userName,
-//             password: password
-//           }  // NEED TOKEN THING HERE FR
-//           })
-//       return data;
-//     } catch (error) {
-//       throw error;
-//     }
-
-//     return(
-//         <h1>hello login</h1>
-//     )
-//   }
-//   export default loginUser
 
 import React, { useState } from "react";
 import { loginUser } from "../api";

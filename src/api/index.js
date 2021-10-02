@@ -1,22 +1,35 @@
-import axios from 'axios';
+import axios from "axios";
 import React, { useState, useEffect } from "react";
-const BASE = 'https://strangers-things.herokuapp.com/api/2021-UNF-HY-WEB-PT'
+const BASE = "https://strangers-things.herokuapp.com/api/2021-UNF-HY-WEB-PT";
 
-import {storeToken, getToken} from "../auth";
-
-
+import { storeToken, getToken } from "../auth";
+// export async function getUsers() {
+//   const myToken = getToken()
+  
+//   try {
+//     const { data } = await axios.get(`${BASE}/users/me`, {
+//       headers: {
+//         "Content-Type": 'application/json',
+//           'Authorization': `Bearer ${myToken}`
+//       }
+//     });
+//     return data;
+//   } catch (error) {
+//     throw error;
+//   }
+// }    for messages
 
 export async function registerUser(userName, password) {
   try {
-    const {data} = await axios.post(`${BASE}/users/register`, {
-        user:  { 
-          username: userName,
-          password: password
-        }
-        })
-    
-      // try to add email element?
-    
+    const { data } = await axios.post(`${BASE}/users/register`, {
+      user: {
+        username: userName,
+        password: password,
+      },
+    });
+
+    // try to add email element?
+
     return data;
   } catch (error) {
     throw error;
@@ -25,35 +38,42 @@ export async function registerUser(userName, password) {
 
 export async function loginUser(userName, password) {
   try {
-    const {data} = await axios.post(`${BASE}/users/login`, {
-        user:  { 
-          username: userName,
-          password: password
-        }
-        })
+    const { data } = await axios.post(`${BASE}/users/login`, {
+      user: {
+        username: userName,
+        password: password,
+      },
+    });
     return data;
   } catch (error) {
     throw error;
   }
 }
 
-export async function createPost(title, description, user, token) {
+export async function createPost(title, description, price, location, delivery) {
+  const token = getToken();
+
   try {
-    const {data} = await axios.post(`${BASE}/posts`, {
-         
+    const { data } = await axios.post(
+      `${BASE}/posts`,
+      {
+        post: {
           title: title,
           description: description,
-          author: user,
-        
-        }, {
-          headers: {
-            "auth-token" : token,
-
-          }
-        })
+          price: price,
+          location: location,
+          delivery: delivery,
+        },
+      },
+      {
+        headers: {
+          "Content-Type": "application/JSON",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     return data;
   } catch (error) {
     throw error;
   }
 }
-

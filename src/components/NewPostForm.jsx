@@ -6,6 +6,9 @@ import './NewPosts.css'
 const NewPostForm = ({setAllPosts, allPosts}) => {
 const [title, setTitle] = useState('')
 const [description, setDescription] = useState('')
+const [price, setPrice] = useState('')
+const [location, setLocation] = useState('')
+const [delivery, setDelivery] = useState("")
 
     return (
         <div className="new-post-component-main-container">
@@ -17,7 +20,7 @@ const [description, setDescription] = useState('')
                         const token = getToken();
                         const user = getUser();
                         console.log(token,user,"!!!!!!!!")
-                        const createNewPost = await createPost(title, description, user, token);
+                        const createNewPost = await createPost(title, description, price,location, delivery, token);
                         setAllPosts([createNewPost, ...allPosts]);
                         console.log("button works")
 
@@ -52,6 +55,43 @@ const [description, setDescription] = useState('')
                 }}
                 ></input>
             </fieldset>
+            <fieldset className="auth-component_input">
+                <label htmlFor="price">Price: </label>
+                <input
+                id="price"
+                type="text"
+                placeholder="Price"
+                value={price}
+                onChange={(event)=> {
+                    setPrice(event.target.value);
+                }}
+                ></input>
+            </fieldset>
+            <fieldset className="auth-component_input">
+                <label htmlFor="Location">Location: </label>
+                <input
+                id="location"
+                type="text"
+                placeholder="enter location"
+                value={location}
+                onChange={(event)=> {
+                    setLocation(event.target.value);
+                }}
+                ></input>
+            </fieldset>
+            <fieldset className="auth-component_input">
+                <label htmlFor="willDeliver">Delivery: </label>
+                <input
+                id="willDeliver"
+                type="text"
+                placeholder="yes/no"
+                value={delivery}
+                onChange={(event)=> {
+                    setDelivery(event.target.value);
+                }}
+                ></input>
+            </fieldset>
+ 
             <button type="submit" id="newPostSubmit"
             >Submit Post</button>
             </form>

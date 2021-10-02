@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Posts.css";
 import { SinglePost } from "./SinglePost";
 import {Link} from 'react-router-dom';
-
+import { getUser } from "../auth";
 
   const Posts = ({allPosts, filteredPosts}) => {
     return(
@@ -15,6 +15,7 @@ import {Link} from 'react-router-dom';
               className="link-tag"
               >
                 <SinglePost post={post} />
+                
               </Link>
           );
         })
