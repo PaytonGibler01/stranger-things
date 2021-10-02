@@ -15,7 +15,8 @@ import {
   NavBar,
   NewPostForm,
   Login,
-  SearchBar
+  SearchBar,
+  SinglePostPage
 } from "./components";
 
 import {getToken} from "./auth";
@@ -67,7 +68,10 @@ if (ele.description.includes(searchTerm)){
   return true
 }
   return false
-})},[searchTerm])
+});
+
+setFilteredPosts(myFilteredPosts)
+},[searchTerm])
 
 
   return (
@@ -81,11 +85,15 @@ if (ele.description.includes(searchTerm)){
           <Route path="/login">
             <Login setIsLoggedIn={setIsLoggedIn}/>
           </Route>
+          <Route path='/posts/:postId'>
+            <SinglePostPage allPosts={allPosts} filteredPosts={filteredPosts}/>
+          </Route>
           <Route path="/posts">
-            <SearchBar searchTerm={searchTerm} setSearchTerm="setSearchTerm"/>
-            <div className="post-new-container">
-            <NewPostForm setAllPosts={setAllPosts} allPosts={allPosts} />
-            <Posts allPosts={allPosts} />
+            
+            <div className="post-new-container"> 
+              <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
+              <NewPostForm setAllPosts={setAllPosts} allPosts={allPosts} filteredPosts={filteredPosts}/>
+              <Posts allPosts={allPosts} />
             </div>
           </Route>
         </Switch>
@@ -94,4 +102,4 @@ if (ele.description.includes(searchTerm)){
   );
 };
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<Router><App /></Router>, document.getElementById("root"));

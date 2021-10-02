@@ -40,11 +40,11 @@ export async function loginUser(userName, password) {
 export async function createPost(title, description, user, token) {
   try {
     const {data} = await axios.post(`${BASE}/posts`, {
-        newPost:  { 
+         
           title: title,
           description: description,
           author: user,
-        }
+        
         }, {
           headers: {
             "auth-token" : token,

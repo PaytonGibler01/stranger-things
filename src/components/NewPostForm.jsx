@@ -17,8 +17,9 @@ const [description, setDescription] = useState('')
                         const token = getToken();
                         const user = getUser();
                         console.log(token,user,"!!!!!!!!")
-                        const createPost = await createPost(title, description, user, token);
-                        setAllPosts([createPost, ...allPosts]);
+                        const createNewPost = await createPost(title, description, user, token);
+                        setAllPosts([createNewPost, ...allPosts]);
+                        console.log("button works")
 
                     } catch (error) {
                         console.log(error)
@@ -51,7 +52,8 @@ const [description, setDescription] = useState('')
                 }}
                 ></input>
             </fieldset>
-            <button type="submit" id="newPostSubmit">Submit Post</button>
+            <button type="submit" id="newPostSubmit"
+            >Submit Post</button>
             </form>
 
         </div>
