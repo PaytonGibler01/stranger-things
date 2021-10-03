@@ -2,26 +2,53 @@
 header{
     padding: 15px 50px;
     margin: 0%;
-    align-items: left;
     text-align: left;
     background: #493a7c;
     color: rgb(255, 255, 255);
     font-size: 30px;
 }
 
-#nav-bar-link {
+a#nav-bar-link {
     color: rgb(255, 255, 255);
     text-align: center;
-    padding: 30px;
+    padding: 20px;
     font-size: 18px;
     line-height: 25px;
     border-radius: 4px;
     border-color: rgb(255, 255, 255);
     border-style: groove;
     background-color: #725db8;
+    align-items: center;
+    display: inline;
+   
+}
+button.nav-bar-link{
+color: rgb(255, 255, 255);
+text-align: center;
+padding: 20px;
+font-size: 18px;
+line-height: 10px;
+border-radius: 4px;
+border-color: rgb(255, 255, 255);
+border-style: groove;
+background-color: #725db8;
+align-items: center;
+
+}
+div.header-posts-button{
+    position: inline;
+   text-align: left;
+   width: 40px;
+  
+
 }
 
-#header-posts-button{
+div.auth-links {
+    text-align: right;
+    height: 50px;
+   
     
 }
+
+
 

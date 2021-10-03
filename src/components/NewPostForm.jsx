@@ -19,6 +19,7 @@ const [delivery, setDelivery] = useState("")
                     try {
                         const token = getToken();
                         const user = getUser();
+                        console.log(token,user,"!!!!!!!!")
                         const createNewPost = await createPost(title, description, price,location, delivery, token);
                         setAllPosts([createNewPost, ...allPosts]);
                         console.log("button works")
@@ -99,4 +100,4 @@ const [delivery, setDelivery] = useState("")
     );
 }
 
-export default NewPostForm;
+export default NewPostForm;  

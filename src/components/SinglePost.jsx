@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {getCurrentUser} from '../api';
 import {getUser, myUser} from '../auth';
-
+import "./Posts.css";
 export const SinglePost = ({ post }) => {
   let myUser = getUser();
   let currentUser = getCurrentUser();
