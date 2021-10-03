@@ -9,11 +9,8 @@ const NavBar = ({isLoggedIn, setIsLoggedIn}) => {
   return (
     <div className="nav-bar">
       <header>
-        <Link id="nav-bar-link" to="/posts">
-          Posts
-        </Link>
-
-        {isLoggedIn ? (
+      <h1 class="logo">Stranger's Things</h1>
+        {/* {isLoggedIn ? (
             <div className='auth-links'>
                 <button className='nav-bar-link' to="/login" onClick={()=>{
                     localStorage.clear()
@@ -27,7 +24,41 @@ const NavBar = ({isLoggedIn, setIsLoggedIn}) => {
         <Link id="nav-bar-link" to="/register">
           Register
         </Link></div>)}
+
+        {/* <div className ="header-posts-button" id>
+        <Link id="nav-bar-link" to="/posts">
+          Posts
+        </Link>
+        </div> */}
       </header>
+
+      {isLoggedIn ? (
+            <div className='auth-links'>
+                <button className='nav-bar-link' to="/login" onClick={()=>{
+                    localStorage.clear()
+                    setIsLoggedIn(false);
+                }}>Logout</button>
+            </div>
+        ): (<div className='auth-links'>
+        <Link id="nav-bar-link" to="/login">
+          Login
+        </Link>
+        <Link id="nav-bar-link" to="/register">
+          Register
+        </Link></div>)}
+
+        {/* <div className ="header-posts-button" id>
+        <Link id="nav-bar-link" to="/posts">
+          Posts
+        </Link>
+        </div> */}
+      
+
+      <div className ="header-posts-button" id>
+        <Link id="nav-bar-link" to="/posts">
+          Posts
+        </Link>
+        </div>
     </div>
   );
 };

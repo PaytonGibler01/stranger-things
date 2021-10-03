@@ -1,31 +1,27 @@
-#nav-bar-link {
-    justify-content: center;
-    float: inherit;
-    margin: 1em auto;
-    border: darkblue;
-    border-radius: 6px;
-    border-style: ridge;
-    text-decoration: none;
-    width: 250px;
-    text-align: center;
-    font-family: 'Balsamic Sans', sans-serif;
-    font-size: 16px;
-  
-    background: lightseagreen;
-    padding: 1em;
-
-}
-
-/* #auth-links{
-    
-} */
-
-
 
 header{
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    background-color: cadetblue;
+    padding: 15px 50px;
+    margin: 0%;
+    align-items: left;
+    text-align: left;
+    background: #493a7c;
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+}
+
+#nav-bar-link {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 30px;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+    border-color: rgb(255, 255, 255);
+    border-style: groove;
+    background-color: #725db8;
+}
+
+#header-posts-button{
+    
 }
 

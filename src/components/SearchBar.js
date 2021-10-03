@@ -14,6 +14,7 @@ const SearchBar = ({ searchTerm, setSearchTerm }) => {
             placeholder="filter"
             value={searchTerm}
             onChange={(event) => {
+              event.preventDefault();
               setSearchTerm(event.target.value);
             }}
           />

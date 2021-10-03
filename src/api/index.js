@@ -3,21 +3,38 @@ import React, { useState, useEffect } from "react";
 const BASE = "https://strangers-things.herokuapp.com/api/2021-UNF-HY-WEB-PT";
 
 import { storeToken, getToken } from "../auth";
-// export async function getUsers() {
-//   const myToken = getToken()
+
+export async function getUsers() {
+  const myToken = getToken()
   
-//   try {
-//     const { data } = await axios.get(`${BASE}/users/me`, {
-//       headers: {
-//         "Content-Type": 'application/json',
-//           'Authorization': `Bearer ${myToken}`
-//       }
-//     });
-//     return data;
-//   } catch (error) {
-//     throw error;
-//   }
-// }    for messages
+  try {
+    const { data } = await axios.get(`${BASE}/users/me`, {
+      headers: {
+        "Content-Type": 'application/json',
+          'Authorization': `Bearer ${myToken}`
+      }
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getCurrentUser() {
+  const myToken = getToken();
+  try {
+    const { currentUser } = await axios.get(`${BASE}/users/me`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${myToken}`,
+      },
+    });
+    return currentUser;
+  } catch (error) {
+    throw error;
+  }
+}
+
 
 export async function registerUser(userName, password) {
   try {

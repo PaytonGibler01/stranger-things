@@ -6,4 +6,20 @@
     
     padding: 10px;
     margin: 20px;
+    text-decoration: none;
+}
+
+.posts-main-container{
+    border-width: 10px;
+    border-color: rgb(167, 117, 117);
+    border-radius: 5px;
+    border-style: solid;
+    
+    padding: 10px;
+    margin: 20px;
+    text-decoration: none;
+}
+
+div p{
+    text-decoration: none;
 }

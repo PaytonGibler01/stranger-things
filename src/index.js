@@ -69,6 +69,13 @@ const App = () => {
     setFilteredPosts(myFilteredPosts);
   }, [searchTerm]);
 
+//   const [currentUser, SetCurrentUser] = useState({});
+// useEffect(async () => {
+//     const data = await getCurrentUser();
+//     SetCurrentUser(data.data);
+//   }, []);
+
+
   return (
     <Router>
       <div id="App">
