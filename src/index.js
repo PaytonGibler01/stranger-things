@@ -17,16 +17,23 @@ import {
   Login,
   SearchBar,
   SinglePostPage,
+  DeleteButton,
 } from "./components";
 
 import { getToken } from "./auth";
+
+import { getCurrentUser } from "./api";
 
 const App = () => {
   const [allPosts, setAllPosts] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredPosts, setFilteredPosts] = useState([]);
-  const [activeUser, setActiveUser] = useState(false)
+  const [activeUser, setActiveUser] = useState(false);
+  const [user, setUser] = useState({});
+
+
+
   const FetchAllPosts = async () => {
     try {
       const myToken = getToken();
@@ -35,24 +42,25 @@ const App = () => {
         setIsLoggedIn(true);
       }
 
-      const response = await axios.get(
+      const {data:{data:{posts}}} = await axios.get(
         "https://strangers-things.herokuapp.com/api/2021-UNF-HY-WEB-PT/posts",
         {
           headers: {
-            "auth-token": myToken,
+            "Authorization": `Bearer ${myToken}`,
           },
         }
       );
 
-      setAllPosts(response);
-      return response.data.data.posts;
+      setAllPosts(posts);
+      // return response.data.data.posts;
     } catch (error) {
       console.error(error);
     }
+
   };
 
   useEffect(async () => {
-    setAllPosts(await FetchAllPosts());
+    FetchAllPosts();
   }, []);
 
   useEffect(() => {
@@ -69,11 +77,14 @@ const App = () => {
     setFilteredPosts(myFilteredPosts);
   }, [searchTerm]);
 
-//   const [currentUser, SetCurrentUser] = useState({});
-// useEffect(async () => {
-//     const data = await getCurrentUser();
-//     SetCurrentUser(data.data);
-//   }, []);
+  const [currentUser, SetCurrentUser] = useState({});
+useEffect(async () => {
+    const data = await getCurrentUser();
+    SetCurrentUser(data.data);
+  }, []);
+
+  
+
 
 
   return (
@@ -87,9 +98,9 @@ const App = () => {
           <Route path="/login">
             <Login setIsLoggedIn={setIsLoggedIn} />
           </Route>
-          <Route path="/posts/:postId">
-            <SinglePostPage allPosts={allPosts} filteredPosts={filteredPosts} />
-          </Route>
+          {/* <Route path="/posts/:postId"> */}
+            {/* <SinglePostPage allPosts={allPosts} filteredPosts={filteredPosts} currentUser={currentUser}/> */}
+          {/* </Route> */}
           <Route path="/posts">
             <div className="post-new-container">
               <SearchBar
@@ -101,7 +112,7 @@ const App = () => {
                 allPosts={allPosts}
                 filteredPosts={filteredPosts}
               />
-              <Posts allPosts={allPosts} filteredPosts={filteredPosts} />
+              <Posts allPosts={allPosts} filteredPosts={filteredPosts} user={user} setUser={setUser} currentUser={currentUser}/>
             </div>
           </Route>
         </Switch>

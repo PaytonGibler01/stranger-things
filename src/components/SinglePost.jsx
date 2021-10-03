@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {getCurrentUser} from '../api';
 import {getUser, myUser} from '../auth';
+import {DeleteButton, Posts} from '.'
 
-export const SinglePost = ({ post }) => {
+export const SinglePost = ({ post, currentUser }) => {
   let myUser = getUser();
-  let currentUser = getCurrentUser();
 
+  console.log(currentUser, "321572137")
+  console.log(myUser, "oooooooooo")
 
   return (
     <div className="post-card">
@@ -14,33 +16,13 @@ export const SinglePost = ({ post }) => {
       <p>Description: {post.description}</p>
       <p>Location : {post.location}</p>
       {post.willDeliver ? <p>Delivery : yes</p> : <p>Delivery : no</p>}
-      <p>Posted By : {myUser}</p>
+      <p>Posted By : {post.author.username}</p>
       <p>Price : {post.price}</p>
       <p>Posted at {post.createdAt}</p>
-      {/* <Link
-        to={`/other-posts-by/${post.author.username}`}
-        onClick={()=> {
-          setUsername(post.author.username);
-        }}
-        >
-          <p>"Other Posts By (post.author.username)</p>
-        </Link> */}
 
-        {myUser === currentUser ? (
-          <button
-            className="delete-post"
-            onClick={async (event) => {
-              event.preventDefault();
-              
-
-              try {
-                await deletePost(post._id);
-              } catch (error) {
-                console.log(error);
-              }
-            }}
-            >Delete Post</button>
-        ) : currentUser && myUser !== currentUser ? (
+        {post.author.username === currentUser.username ? (
+          <DeleteButton post={post}/>
+        ) : currentUser.username && post.author.username !== currentUser.username ? (
           <Link
             to={'/message'}
             onClick={() => {
@@ -49,7 +31,7 @@ export const SinglePost = ({ post }) => {
             }}
             ><button>Send A Message</button></Link>
         ) : null} 
-
+        
     </div>
   );
 };

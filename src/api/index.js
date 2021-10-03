@@ -23,13 +23,13 @@ export async function getUsers() {
 export async function getCurrentUser() {
   const myToken = getToken();
   try {
-    const { currentUser } = await axios.get(`${BASE}/users/me`, {
+    const { data } = await axios.get(`${BASE}/users/me`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${myToken}`,
       },
     });
-    return currentUser;
+    return data;
   } catch (error) {
     throw error;
   }
@@ -93,4 +93,26 @@ export async function createPost(title, description, price, location, delivery) 
   } catch (error) {
     throw error;
   }
+}
+
+export async function deletePost(){
+  const myToken = getToken();
+
+  try {
+    const { data } = await axios.delete(`${BASE}/posts/${id}`, {
+
+      method:"DELETE",
+
+      headers: {
+        "Content-Type": 'application/json',
+          'Authorization': `Bearer ${myToken}`
+      }
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  } finally {
+    location.reload();
+  }
+
 }

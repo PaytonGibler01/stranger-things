@@ -21,7 +21,28 @@ header{
     background-color: #725db8;
 }
 
-#header-posts-button{
-    
+#login-logout-register-button{
+    float: left;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 30px;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+    border-color: rgb(255, 255, 255);
+    border-style: groove;
+    background-color: #725db8;
 }
 
+#header-posts-button{
+    float:right;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 30px;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+    border-color: rgb(255, 255, 255);
+    border-style: groove;
+    background-color: #725db8;
+}

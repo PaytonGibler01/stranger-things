@@ -4,7 +4,8 @@ import { SinglePost } from "./SinglePost";
 import {Link} from 'react-router-dom';
 import { getUser } from "../auth";
 
-  const Posts = ({allPosts, filteredPosts}) => {
+  const Posts = ({allPosts, filteredPosts, currentUser}) => {
+
     return(
       <div className="posts-main-container">
         {filteredPosts && filteredPosts.length ? filteredPosts.map((post) => {
@@ -14,7 +15,7 @@ import { getUser } from "../auth";
               key={post._id}
               className="link-tag"
               >
-                <SinglePost post={post} />
+                <SinglePost post={post} currentUser={currentUser}/>
                 
               </Link>
           );
@@ -27,7 +28,7 @@ import { getUser } from "../auth";
             key={post._id}
             className="link-tag"
             >
-              <SinglePost post={post} />
+              <SinglePost post={post} currentUser={currentUser}/>
             </Link>
         );
       })
