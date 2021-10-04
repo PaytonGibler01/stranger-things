@@ -22,7 +22,7 @@ header{
 }
 
 #login-logout-register-button{
-    float: left;
+    float: center;
     color: rgb(255, 255, 255);
     text-align: center;
     padding: 30px;
